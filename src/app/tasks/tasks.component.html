@@ -1,0 +1,15 @@
+<app-new-task *ngIf="isAddingTask" [userId]="user.id" (cancelNewTask)="onCancelAddTask()"></app-new-task>
+<section id="tasks">
+    <header>
+        <h2>{{user.name}}'s Tasks</h2>
+        <menu>
+            <button (click)="onStartAddTask()">Add Task</button>
+        </menu>
+
+    </header>
+    <ul>
+        <li *ngFor="let task of selectedUserTasks;trackBy:trackTask">
+            <app-task [task]="task"></app-task>
+        </li>
+    </ul>
+</section>

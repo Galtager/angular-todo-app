@@ -1,0 +1,15 @@
+<app-header></app-header>
+<main>
+    <ul id="users">
+        <li *ngFor="let user of users;trackBy:trackUser  ">
+            <app-user [user]="user" (select)="onSelectUser($event)"
+                [selected]="user.id === selectedUser?.id"></app-user>
+        </li>
+    </ul>
+
+    <app-tasks *ngIf="!!selectedUser;else noSelectedUser" [user]="selectedUser"></app-tasks>
+    <ng-template #noSelectedUser>
+        <p id="fallback">Select a user to see their tasks</p>
+    </ng-template>
+
+</main>
